@@ -43,5 +43,6 @@ function fazerPergunta() {
   setTimeout(() => {
     resposta.style.opacity = 0;
     btnPerguntar.removeAttribute("disabled");
+    inputPergunta.value = "";
   }, 2000);
 }
