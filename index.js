@@ -1,5 +1,6 @@
 const resposta = document.querySelector("#resposta");
 const inputPergunta = document.querySelector("#inputPergunta");
+const btnPerguntar = document.querySelector("#btnPerguntar");
 
 const respostas = [
   "Certeza!",
@@ -29,17 +30,18 @@ function fazerPergunta() {
     return; // return paralisa o código aqui.
   }
 
+  btnPerguntar.setAttribute("disabled", true);
+
   const pergunta = "<div>" + inputPergunta.value + "</div>";
 
   const totalRespostas = respostas.length;
   const numeroAleatorio = Math.floor(Math.random() * totalRespostas);
   resposta.innerHTML = pergunta + respostas[numeroAleatorio];
 
-  setTimeout(() => {
-    resposta.style.opacity = 0;
-  }, 2000);
+  resposta.style.opacity = 1;
 
   setTimeout(() => {
-    window.location.reload();
-  }, 3000);
+    resposta.style.opacity = 0;
+    btnPerguntar.removeAttribute("disabled");
+  }, 2000);
 }
